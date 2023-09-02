@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/components/loader.dart';
 import 'package:ecommerceapp/utils/costum_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(35),
-        color: CostumeTheme.yellow,
+        color: CustomTheme.yellow,
         boxShadow: [
           BoxShadow(
             color: Colors.grey,
@@ -32,7 +33,7 @@ class CustomButton extends StatelessWidget {
       child: MaterialButton(
         onPressed: loading ? null : onPress,
         child: loading
-            ? Text("Loading")
+            ? Loader()
             : Text(
                 text,
                 style: Theme.of(context).textTheme.titleSmall,

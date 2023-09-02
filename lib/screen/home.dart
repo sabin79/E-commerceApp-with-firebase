@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/components/grid_card.dart';
+import 'package:ecommerceapp/screen/product.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,6 +13,11 @@ class _HomeScreenState extends State<HomeScreen> {
   final data = ['1', '2'];
   @override
   Widget build(BuildContext context) {
+    onCardPress() {
+      Navigator.push(
+          context, MaterialPageRoute(builder: ((context) => ProductScreen())));
+    }
+
     return Container(
         child: GridView.builder(
             itemCount: data.length,
@@ -22,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisSpacing: 30,
             ),
             itemBuilder: (BuildContext context, int index) {
-              return GridCard(index: index, onPress: () {});
+              return GridCard(index: index, onPress: onCardPress);
             }));
   }
 }

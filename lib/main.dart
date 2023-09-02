@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: CostumeTheme.getTheme(),
+      theme: CustomTheme.getTheme(),
       home: DefaultTabController(
         length: 3,
         child: Scaffold(

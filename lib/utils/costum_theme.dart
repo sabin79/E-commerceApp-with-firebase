@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CostumeTheme {
+class CustomTheme {
   static Color grey = const Color(0xffDFDFDF);
   static Color yellow = const Color(0xffFFDB47);
 
