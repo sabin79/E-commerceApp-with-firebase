@@ -1,0 +1,1 @@
+enum ApplicationLoginState { loggetIn, LoggetOut }

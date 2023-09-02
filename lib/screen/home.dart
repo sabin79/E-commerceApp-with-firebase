@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/components/grid_card.dart';
+import 'package:ecommerceapp/screen/login.dart';
 import 'package:ecommerceapp/screen/product.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     onCardPress() {
       Navigator.push(
-          context, MaterialPageRoute(builder: ((context) => ProductScreen())));
+          context, MaterialPageRoute(builder: ((context) => LoginScreen())));
     }
 
     return Container(

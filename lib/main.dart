@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:ecommerceapp/screen/checkout.dart';
 import 'package:ecommerceapp/screen/home.dart';
+import 'package:ecommerceapp/screen/login.dart';
 import 'package:ecommerceapp/screen/profile.dart';
+import 'package:ecommerceapp/utils/application_state.dart';
 import 'package:ecommerceapp/utils/costum_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,16 +13,30 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
   // firebasae setup
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
 //strip setup
-  // final String response =
-  //     await rootBundle.loadString("assets/config/stripe.json");
-  // final data = await json.decode(response);
-  // Stripe.publishableKey = data["publishableKey"];
+  final String response =
+      await rootBundle.loadString("assets/config/stripe.json");
+  final data = await json.decode(response);
+  Stripe.publishableKey = data["publishableKey"];
 
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => ApplicationState(),
+      builder: (context, ApplicationState, _) {
+        Widget child;
+        switch (ApplicationState.loginState) {
+          case ApplicationLoginState.LoggetOut:
+            child = LoginScreen();
+            break;
+          case ApplicationLoginState.loggetIn:
+            child = MyApp();
+            break;
+          default:
+            child = LoginScreen();
+        }
+      }));
 }
 
 class MyApp extends StatelessWidget {
