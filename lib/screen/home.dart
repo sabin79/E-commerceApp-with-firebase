@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     onCardPress() {
       Navigator.push(
-          context, MaterialPageRoute(builder: ((context) => LoginScreen())));
+          context, MaterialPageRoute(builder: ((context) => ProductScreen())));
     }
 
     return Container(

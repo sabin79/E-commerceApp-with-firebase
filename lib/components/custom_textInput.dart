@@ -34,7 +34,7 @@ class CustomTextInput extends StatelessWidget {
             child: TextField(
               controller: textEditingController,
               obscureText: true,
-              enableSuggestions: !password,
+              enableSuggestions: password,
               autocorrect: !password,
               decoration: InputDecoration(
                 prefixIcon: Padding(

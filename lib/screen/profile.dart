@@ -1,5 +1,8 @@
 import 'package:ecommerceapp/components/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../utils/application_state.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -9,6 +12,15 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool _loadingButton = false;
+
+  SignOutButtonPress() {
+    setState(() {
+      _loadingButton = true;
+    });
+    Provider.of<ApplicationState>(context, listen: false).signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,11 +31,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Padding(
             padding: EdgeInsets.only(bottom: 20),
             child: Text(
-              "Here There",
+              "Hello There",
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
-          CustomButton(text: "SIGN OUT", onPress: () {})
+          CustomButton(
+            text: "SIGN OUT",
+            onPress: SignOutButtonPress,
+            loading: _loadingButton,
+          )
         ],
       ),
     );

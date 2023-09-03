@@ -1,8 +1,11 @@
 import 'package:ecommerceapp/components/custom_button.dart';
 import 'package:ecommerceapp/components/custom_textInput.dart';
+import 'package:ecommerceapp/utils/application_state.dart';
 import 'package:ecommerceapp/utils/login_data.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -32,7 +35,26 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  void LoginButtonPressed() {}
+  loginError(FirebaseAuthException e) {
+    if (e.message != '') {
+      _LoadingButton = false;
+    }
+  }
+
+  void LoginButtonPressed() {
+    setState(() {
+      _LoadingButton = true;
+    });
+    ApplicationState applicationState =
+        Provider.of<ApplicationState>(context, listen: false);
+    if (mapEquals(data, LoginData.SignUp)) {
+      applicationState.signUp(
+          _emailController.text, _passwordController.text, loginError);
+    } else {
+      applicationState.signIn(
+          _emailController.text, _passwordController.text, loginError);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
