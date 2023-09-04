@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ecommerceapp/models/json_data.dart';
 import 'package:ecommerceapp/screen/checkout.dart';
 import 'package:ecommerceapp/screen/home.dart';
@@ -106,11 +104,11 @@ class MyApp extends StatelessWidget {
               ],
             ),
           ),
-          body: const TabBarView(
+          body: TabBarView(
             children: [
               HomeScreen(),
-              JsonData(),
               CheckoutScreen(),
+              HomePage(),
             ],
           )),
     );
