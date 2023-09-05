@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/models/json_data.dart';
+import 'package:ecommerceapp/models/view.dart';
 import 'package:ecommerceapp/screen/checkout.dart';
 import 'package:ecommerceapp/screen/home.dart';
 import 'package:ecommerceapp/screen/login.dart';
@@ -7,7 +8,6 @@ import 'package:ecommerceapp/utils/application_state.dart';
 import 'package:ecommerceapp/utils/costum_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 
@@ -107,8 +107,10 @@ class MyApp extends StatelessWidget {
           body: TabBarView(
             children: [
               HomeScreen(),
+              // MyHomePage(),
+              //  JsonData(),
+              ViewJson(),
               CheckoutScreen(),
-              HomePage(),
             ],
           )),
     );
